@@ -6,6 +6,8 @@
 
 void load_image(const char* filepath, unsigned char** image_data, size_t* width, size_t* height);
 void save_image(const char* filepath, unsigned char* image, size_t width, size_t height);
+const int RGB = 3;
+const int NB_PIXEL = 9;
 
 int main(void)
 {
@@ -18,6 +20,7 @@ int main(void)
 
 	int tab[12] = {0};
     load_image(filename, &image, &width, &height);
+	void convolution(int* tab);
 	out_image = malloc((width*height*3) * sizeof(unsigned char));
 
     //votre code ici
@@ -25,14 +28,33 @@ int main(void)
 	int convert_coord_to_tab(int x, int y);
 
 	save_image(output_filename, out_image, width, height);
+	convolution(tab);
 	free(image);
     free(out_image);
 	return 0;
 }
 
 	int convert_coord_to_tab(int x, int y){
-		int position = x*4+y*3;
-		return position +1;
+		return x*4+y*3;
+	}
+
+	void convolution(int* tab){
+		int sumR  = 0;
+		int sumG  = 0;
+		int sumB  = 0;
+		for(int i = 0; i < 0 + RGB * NB_PIXEL; i+=3){
+			sumR+= tab[i];
+			sumG+= tab[i+1];
+			sumB+= tab[i+2];
+		}
+		sumR/= NB_PIXEL;
+		sumG /= NB_PIXEL;
+		sumB /= NB_PIXEL;
+		for(int i = 0; i < 0 + RGB * NB_PIXEL; i+=3){
+			tab[i] = sumR;
+			tab[i+1] = sumG;
+			tab[i+2] = sumB;
+		}
 	}
 
 
