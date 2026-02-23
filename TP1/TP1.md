@@ -1,2 +1,0 @@
-# Programmation concurrente - TP1
-
