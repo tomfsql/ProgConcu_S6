@@ -1,2 +1,4 @@
 *.pdf
 *-Correction/
+*a.out
+*.ppm

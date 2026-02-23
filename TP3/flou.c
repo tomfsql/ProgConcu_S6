@@ -15,17 +15,26 @@ int main(void)
     const char* output_filename = "output.ppm";
 	size_t width = 0;
 	size_t height = 0;
-	
+
+	int tab[12] = {0};
     load_image(filename, &image, &width, &height);
 	out_image = malloc((width*height*3) * sizeof(unsigned char));
 
     //votre code ici
+
+	int convert_coord_to_tab(int x, int y);
 
 	save_image(output_filename, out_image, width, height);
 	free(image);
     free(out_image);
 	return 0;
 }
+
+	int convert_coord_to_tab(int x, int y){
+		int position = x*4+y*3;
+		return position +1;
+	}
+
 
 //Vous n'avez pas besoin de comprendre les lignes qui suivent
 
