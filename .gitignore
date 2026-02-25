@@ -2,3 +2,5 @@
 *-Correction/
 *a.out
 *.ppm
+*.o
+[^.]*
