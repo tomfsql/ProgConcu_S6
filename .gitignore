@@ -1,5 +1,14 @@
+# Files and folders
 *.pdf
 *-Correction/
+
+# Generic executable name
 *a.out
+
+# Provided file
 *.ppm
+
+# Binary files and folders
 *.o
+bin/
+build/
