@@ -2,11 +2,13 @@
 #include <unistd.h>
 #include <sys/wait.h>
 #include <stdlib.h>
-
+#include <dirent.h>
 int main(int argc, char* argv)
 {
  if (argc > 1){
-    int exec = execv(argv[1], NULL);
+    char* args[3] = {"cd", argv[1], NULL};
+    int exec = execv(args, NULL);
+    DIR* directory = opendir(argv[1]);
  }
  wait(NULL);
  return 0;
