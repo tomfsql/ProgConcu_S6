@@ -8,17 +8,17 @@ int main(void)
  pid_t fils = fork();
     if (fils == 0)
     {
-        int error = execlp("ls","-l","/usr/share","&","ls","-l","&","ps",NULL);
+        int error = execlp("ls","ls","-l","/usr/share","&","ls","-l","&","ps",NULL);
         if (error == -1)
         {
             perror("exec fail");
             exit(-1);
         }
-        pid_t fils=fork();
-        int error = execlp("ls","-l","&",NULL);
+/*         pid_t fils=fork();
+        int error2 = execlp("ls","ls","-l","&",NULL);
 
         pid_t fils2= fork();
-        int error = execlp("ps",NULL);
+        int error3 = execlp("ps","ps",NULL); */
  }
  wait(NULL);
  return 0;
