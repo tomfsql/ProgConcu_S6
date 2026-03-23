@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <fcntl.h>
 int main()
 {
     int tube1[2];
@@ -52,6 +53,12 @@ int main()
         close(tube1[1]);
         close(tube1[0]);
         dup2(tube3[0],0);
+        int fd_out = open("users", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+        if (fd_out == -1) {
+            perror("open users");
+            exit(-1);
+        }
+        dup2(fd_out, 1);
         close(tube3[0]);
         close(tube3[1]);
         close(tube2[0]);
