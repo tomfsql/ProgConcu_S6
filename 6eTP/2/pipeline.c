@@ -16,7 +16,14 @@ int main()
     }
     if (fork() == 0){
         close(tube1[0]);
+        int fd_in = open("/etc/passwd", O_RDONLY);
+        if (fd_in == -1) {
+            perror("open users");
+            exit(-1);
+        }
+        dup2(fd_in,0);
         dup2(tube1[1],1);
+        close(fd_in);
         close(tube1[1]);
         close(tube2[0]);
         close(tube2[1]);
