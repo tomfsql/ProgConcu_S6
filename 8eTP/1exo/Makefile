@@ -3,12 +3,12 @@ CFLAGS = -Wall -Wextra -g
 
 all: first second
 
-first: first.c
-	${CC} ${CFLAGS} first.c -o first
+first: first.c dijkstra.o
+	${CC} ${CFLAGS} first.c dijkstra.o -o first
 
-second: second.c
-	${CC} ${CFLAGS} second.c -o second
+second: second.c dijkstra.o
+	${CC} ${CFLAGS} second.c dijkstra.o -o second
 
 
 clean:
-	rm -rf first second
+	rm -f first second dijkstra.o
