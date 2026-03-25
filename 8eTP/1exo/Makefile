@@ -16,4 +16,4 @@ delete: clean.c dijkstra.o
 	${CC} ${CFLAGS} clean.c dijkstra.o -o clean
 
 clean:
-	rm -f first second dijkstra.o
+	rm -f first second clean init
