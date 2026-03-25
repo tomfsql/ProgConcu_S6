@@ -2,18 +2,20 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "dijkstra.h"
+#include <sys/types.h>
+#include <newlib/sys/types.h>
 
 int sem_create(key_t cle, int initval) {
 	int semid;
-	union semun { int val; struct semid_ds *buf; u_short *array; } arg_ctl;
+	union semun { int val; struct semid_ds *buf; unsigned short *array; } arg_ctl;
 
 	semid = semget(cle, 1 , IPC_CREAT|IPC_EXCL|0600);
-	if (semid == -1) 
+	if (semid == -1)
 	{
         return -1;
-    } 
-	else 
-	{ 
+    }
+	else
+	{
 		arg_ctl.val = initval;
 		if (semctl(semid, 0, SETVAL, arg_ctl) == -1) 
 		{
