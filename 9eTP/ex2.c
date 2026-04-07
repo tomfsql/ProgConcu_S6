@@ -5,18 +5,10 @@
 #include <signal.h>
 struct sigaction act;
 
-void redirect(int signum){
-    if(signum == SIGINT){
-        printf("Received signal \n");
-        puts("end");
-        _exit(0);
-    }
-}
-
 int main(void)
 {
     memset(&act,0,sizeof(act));
-    act.sa_handler = redirect;
+    act.sa_handler = SIG_IGN;
     sigaction(SIGINT,&act,NULL);
     while(1){
         printf("Background task");
