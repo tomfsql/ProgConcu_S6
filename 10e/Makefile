@@ -12,4 +12,4 @@ delete: clean.c dijkstra.o
 	${CC} ${CFLAGS} clean.c dijkstra.o -o clean
 
 clean:
-	rm -f main ex2 ex3
+	rm -f main init delete

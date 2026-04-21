@@ -6,13 +6,8 @@
 
 int main(){
     int shmid = shmget(130,1 * sizeof(int),0);
-    int res = shmctl(shmid,IPC_RMID,NULL);
-    if (res == -1) {
-        perror("Delete Shm");
+    if (shmid == -1) {
+        perror("Getting Shm");
     }
-    int mutexId = sem_get(130);
-    sem_delete(mutexId);
-    int semId = sem_get(131);
-    sem_delete(semId);
     return 0;
 }
