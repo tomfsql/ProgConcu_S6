@@ -1,6 +1,8 @@
 # Files and folders
 *.pdf
 *-Correction/
+Slides/
+TP11_extra/
 
 # Generic executable name
 *a.out

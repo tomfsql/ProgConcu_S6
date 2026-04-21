@@ -4,13 +4,12 @@
 #include <unistd.h>
 #include "dijkstra.h"
 
-int main(){
+int main(int argc, char *argv[]){
     int id = sem_get(130);
-    srand(time(NULL));
-    int num = 3 + rand() % 3;
-    printf("Waiting for %d seconds \n", num);
-    sleep(num);
-    printf("Terminating \n");
-    V(id);
+    int value = 0;
+    if(argc > 1){ value = atoi(argv[1]); }
+    else{
+        perror("Missing value \n");
+    }
     return 0;
 }
