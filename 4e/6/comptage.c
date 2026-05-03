@@ -5,7 +5,6 @@
 #include <sys/wait.h>
 
 int main(){
-    int status_fils = 0;
     int step = 50;
     for(int i=0; i<4;i++){
         pid_t fils = fork();
@@ -14,7 +13,7 @@ int main(){
             int end = start + step;
             printf("Je vais compter de %d à %d fork a retourné %d\n",start,end,getpid());
             int j = start;
-            while(j < end){
+            while(j <= end){
                 printf("%d \n", j);
                 j++;
             }
