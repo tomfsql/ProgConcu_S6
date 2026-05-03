@@ -3,6 +3,10 @@
 *-Correction/
 Slides/
 TP11_extra/
+*.jpg
+*.png
+*.txt
+**/images
 
 # Generic executable name
 *a.out
