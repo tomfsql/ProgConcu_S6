@@ -27,7 +27,7 @@ Entièrement traité.
 
 ## TP9
 
-Exercices 1 à 4 faits.
+Exercices 1 à 5 faits.
 
 ## TP 10 et 11
 
