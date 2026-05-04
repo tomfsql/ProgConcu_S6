@@ -30,37 +30,43 @@ int main()
     {
         *tab[j] = rand() % 5;
     }
-    int max = *tab[0];
-    int offset = 1;
-    int position = 0;
-    while (offset < N)
+    int keep = 1;
+    int count = 0;
+    while (keep && count < N)
     {
-        if (*tab[offset] > max)
+        int max = *tab[0];
+        int offset = 1;
+        int position = 0;
+        while (offset < N)
         {
-            max = *tab[offset];
-            position = offset;
+            if (*tab[offset] > max)
+            {
+                max = *tab[offset];
+                position = offset;
+            }
+            offset++;
         }
-        offset++;
-    }
-    int mutexId = sem_get(KEY);
-    int semId = sem_get(KEY_2);
-    P(semId);
-    P(mutexId);
-    mem[0] = max;
-    V(mutexId);
-    V(semId);
+        int mutexId = sem_get(KEY);
+        int semId = sem_get(KEY_2);
+        P(semId);
+        P(mutexId);
+        mem[0] = max;
+        V(mutexId);
+        V(semId);
 
-    P(semId);
-    P(mutexId);
-    if (mem[2] != -1)
-    {
-        *tab[position] = mem[0];
-    }
-    else
-    {
-        for (int j = 0; j < N; j++)
+        P(semId);
+        P(mutexId);
+        if (mem[2] != -1)
         {
-            printf(" %d \n ", *tab[j]);
+            *tab[position] = mem[0];
+        }
+        else
+        {
+            keep = 0;
+            for (int j = 0; j < N; j++)
+            {
+                printf(" %d \n ", *tab[j]);
+            }
         }
     }
     shmdt(mem);

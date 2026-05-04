@@ -18,20 +18,26 @@ int main()
     int mutexId = sem_get(KEY);
     int semId = sem_get(KEY_2);
     int *mem = shmat(shmid, NULL, 0);
-    P(mutexId);
-    P(semId);
-    if (mem[0] > mem[1])
+    int keep = 1;
+    int count = 0;
+    while (keep && count < N)
     {
-        int tempmin = mem[1];
-        mem[1] = mem[0];
-        mem[0] = tempmin;
+        P(mutexId);
+        P(semId);
+        if (mem[0] > mem[1])
+        {
+            int tempmin = mem[1];
+            mem[1] = mem[0];
+            mem[0] = tempmin;
+        }
+        else
+        {
+            mem[2] = -1;
+            keep = 0;
+        }
+        V(mutexId);
+        V(semId);
     }
-    else
-    {
-        mem[2] = -1;
-    }
-    V(mutexId);
-    V(semId);
     shmdt(mem);
     return 0;
 }

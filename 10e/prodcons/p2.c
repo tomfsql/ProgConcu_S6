@@ -37,32 +37,38 @@ int main()
     int min = tab[0];
     int offset = 1;
     int position = 0;
-    while (offset < N)
+    int keep = 1;
+    int count = 0;
+    while (keep && count < N)
     {
-        if (tab[offset] < min)
+        while (offset < N)
         {
-            min = tab[offset];
-            position = offset;
+            if (tab[offset] < min)
+            {
+                min = tab[offset];
+                position = offset;
+            }
+            offset++;
         }
-        offset++;
-    }
-    P(semId);
-    P(mutexId);
-    mem[1] = min;
-    V(mutexId);
-    V(semId);
+        P(semId);
+        P(mutexId);
+        mem[1] = min;
+        V(mutexId);
+        V(semId);
 
-    P(semId);
-    P(mutexId);
-    if (mem[2] != -1)
-    {
-        tab[position] = mem[1];
-    }
-    else
-    {
-        for (int j = 0; j < N; j++)
+        P(semId);
+        P(mutexId);
+        if (mem[2] != -1)
         {
-            printf(" %d \n ", tab[j]);
+            tab[position] = mem[1];
+        }
+        else
+        {
+            keep = 0;
+            for (int j = 0; j < N; j++)
+            {
+                printf(" %d \n ", tab[j]);
+            }
         }
     }
     shmdt(mem);
