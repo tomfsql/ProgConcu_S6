@@ -1,13 +1,16 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -g
 
-make: write read init delete
+make: p0 p1 init delete
 
-write: write.c dijkstra.o
-	${CC} ${CFLAGS} write.c dijkstra.o -o write
+p0: p0.c dijkstra.o
+	${CC} ${CFLAGS} p0.c dijkstra.o -o p0
 
-read: read.c dijkstra.o
-	${CC} ${CFLAGS} read.c dijkstra.o -o read
+p1: p1.c dijkstra.o
+	${CC} ${CFLAGS} p1.c dijkstra.o -o p1
+
+p2: p2.c dijkstra.o
+	${CC} ${CFLAGS} p2.c dijkstra.o -o p2
 
 init: init.c dijkstra.o
 	${CC} ${CFLAGS} init.c dijkstra.o -o init
@@ -16,4 +19,4 @@ delete: clean.c dijkstra.o
 	${CC} ${CFLAGS} clean.c dijkstra.o -o clean
 
 clean:
-	rm -f write read init delete
+	rm -f p0 p1 init delete

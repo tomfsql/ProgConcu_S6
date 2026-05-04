@@ -8,7 +8,7 @@
 #include "dijkstra.h"
 #define KEY 5942
 #define KEY_2 5943
-#define SIZE 3
+#define SIZE 4
 
 int main(void)
 {
