@@ -7,7 +7,7 @@ Incomplet.
 ## TP4
 
 Une partie de l'exercice 5 manquant ( voir fichier ex5.md).
-Le reste du Tp est fait.
+Le reste du TP est fait.
 
 ## TP5
 
@@ -23,7 +23,7 @@ Non-traité
 
 ## TP8
 
-Entièrement traité sauf la dernière question.
+Entièrement traité.
 
 ## TP9
 
